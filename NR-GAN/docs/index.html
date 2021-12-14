@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138229553-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'UA-138229553-3');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>NR-GAN</title>
+  </head>
+
+  <style type="text/css">
+    footer {
+	padding-top: 10px;
+	padding-bottom: 10px;
+    }
+    .bg-whitesmoke {
+	background-color: whitesmoke
+    }
+    .thumbnail-shadow {
+	filter: drop-shadow(5px 5px 5px #aaa);
+    }
+    table{
+	margin: 0 auto
+    }
+  </style>
+  
+  <body>
+    <header>
+      <div class="jumbotron text-center bg-whitesmoke">
+	<div class="container">
+	  <h2>Noise Robust Generative Adversarial Networks</h2>
+	  <p class="lead">
+	    <a href="http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/">Takuhiro Kaneko</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+	    <a href="https://www.mi.t.u-tokyo.ac.jp/harada/">Tatsuya Harada</a><sup>1,2</sup>&nbsp;&nbsp;&nbsp;<br>
+	    <sup>1</sup>The University of Tokyo&nbsp;&nbsp;&nbsp;
+	    <sup>2</sup>RIKEN
+	  </p>
+	  <p class="lead">
+	    CVPR 2020<br>
+	    <a href="https://arxiv.org/abs/1911.11776">[Paper]</a>
+	    <a href="https://github.com/takuhirok/NR-GAN/">[Code]</a>
+	    <a href="NR-GAN_slides.pdf">[Slides]</a>
+	    <a href="https://youtu.be/U0R5i8o_d40">[Video]</a>
+	  </p>
+	</div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+	<figure class="figure text-center">
+	  <p>
+	    <a name="fig1"><img class="w-100" src="images/examples.png" alt="Examples"></a>
+	  </p>
+	  <figcaption class="figure-caption text-left">
+	    Figure 1. Examples of noise robust image generation. Standard GAN (b)(e) replicates images faithfully even when training images are <em>noisy</em> (a)(d). In contrast, NR-GAN can learn to generate <em>clean images</em> (c)(f) even when the same <em>noisy images</em> (a)(d) are used for training.
+	  </figcaption>
+	</figure>
+
+	<p>
+	  <strong>Note:</strong> In our previous studies, we have also proposed GAN for <em>label noise</em> and GAN for <em>ambiguous labels</em>. In our follow-up study, we have also proposed GAN for <em>blur, noise, and compression</em>. Please check them from the links below.
+	</p>
+
+	<p>
+	  <table>
+	    <tbody>
+	      <tr class="text-left">
+		<td>
+		  GAN for <em>label noise</em>: <a href="https://takuhirok.github.io/rGAN/"><strong>Label-noise robust GAN (rGAN)</strong></a> (CVPR 2019)
+		</td>
+	      <tr class="text-left">
+		<td>
+		  GAN for <em>ambiguous labels</em>: <a href="https://takuhirok.github.io/CP-GAN/"><strong>Classifier's posterior GAN (CP-GAN)</strong></a> (BMVC 2019)
+		</td>
+	      </tr>
+	      <tr class="text-left">
+		<td>
+		  GAN for <em>blur, noise, and compression</em>: <a href="https://takuhirok.github.io/BNCR-GAN/"><strong>Blur, noise, and compression robust GAN (BNCR-GAN)</strong></a> (CVPR 2021)
+		</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</p>
+
+	<h3 class="text-center">Abstract</h3>
+	<p>
+	  Generative adversarial networks (GANs) are neural networks that learn data distributions through adversarial training. In intensive studies, recent GANs have shown promising results for reproducing training images. However, in spite of noise, they reproduce images with fidelity. As an alternative, we propose a novel family of GANs called <strong>noise robust GANs (NR-GANs)</strong>, which can learn a <em>clean image generator</em> even when training images are <em>noisy</em>. In particular, NR-GANs can solve this problem <em>without having complete noise information</em> (e.g., the noise distribution type, noise amount, or signal-noise relationship). To achieve this, we introduce a noise generator and train it along with a clean image generator. However, without any constraints, there is no incentive to generate an image and noise separately. Therefore, we propose distribution and transformation constraints that encourage the noise generator to capture only the noise-specific components. In particular, considering such constraints under different assumptions, we devise two variants of NR-GANs for signal-independent noise and three variants of NR-GANs for signal-dependent noise. On three benchmark datasets, we demonstrate the effectiveness of NR-GANs in noise robust image generation. Furthermore, we show the applicability of NR-GANs in image denoising.
+	</p>
+	
+	<h3 class="text-center">Paper</h3>
+	<p>
+	  <table>
+	    <tbody>
+	      <tr>
+		<td>
+		  <a href="https://arxiv.org/abs/1911.11776"><img class="thumbnail-shadow" alt="paper thumbnail" src="images/paper_thumbnail.png"  width=150></a>
+		</td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td class="text-center">
+		  <p>
+		    <a href="https://arxiv.org/abs/1911.11776" class="lead">[Paper]</a><br>
+		    arXiv:1911.11776<br>Nov. 2019.
+		  </p>
+		  <p>
+		    <a href="NR-GAN_slides.pdf" class="lead">[Slides]</a>
+		    <a href="https://youtu.be/U0R5i8o_d40" class="lead">[Video]</a>
+		  </p>
+		</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</p>
+
+	<h4 class="text-center">Citation</h4>
+	<p class="text-center">
+	  Takuhiro Kaneko and Tatsuya Harada.<br>
+	  Noise Robust Generative Adversarial Networks.
+	  In CVPR, 2020.<br>
+	  <a href="NR-GAN.txt" class="lead">[BibTex]</a>
+	</p>
+	
+	<h3 class="text-center">Code</h3>
+	<p class="text-center lead">
+	  <a href="https://github.com/takuhirok/NR-GAN/">[PyTorch]</a>
+	</p>
+
+	<h3 class="text-center">Video</h3>
+	<p class="text-center lead">
+	  <iframe width="560" height="315" src="https://www.youtube.com/embed/U0R5i8o_d40" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</p>
+
+	<h3 class="text-center">Examples of generated images</h3>
+	<h5 class="text-center">LSUN Bedroom with signal-independent noises</h5>
+	<figure class="figure text-center">
+	  <p>
+	    <a name="fig2"><img class="w-100" src="images/examples_bedroom_si.png" alt="Examples of generated images on LSUN Bedroom with signal-independent noises"></a>
+	  </p>
+	  <figcaption class="figure-caption text-left">
+	    Figure 2. Examples of generated images on LSUN Bedroom with signal-independent noises. AmbientGAN<sup>†</sup> is trained with the ground-truth noise model, while the other models are trained without full knowledge of the noise (i.e., the noise distribution type and noise amount).
+	  </figcaption>
+	</figure>
+
+	<h5 class="text-center">LSUN Bedroom with signal-dependent noises</h5>
+	<figure class="figure text-center">
+	  <p>
+	    <a name="fig2"><img class="w-100" src="images/examples_bedroom_sd.png" alt="Examples of generated images on LSUN Bedroom with signal-dependent noises"></a>
+	  </p>
+	  <figcaption class="figure-caption text-left">
+	    Figure 3. Examples of generated images on LSUN Bedroom with signal-dependent noises. AmbientGAN<sup>†</sup> is trained with the ground-truth noise model, while the other models are trained without full knowledge of the noise (i.e., the noise distribution type, noise amount, and signal-noise relationship).
+	  </figcaption>
+	</figure>
+
+	<h3 class="text-center">Acknowledgment</h3>
+	<p>
+	  We would like to thank Naoya Fushishita, Takayuki Hara, and Atsuhiro Noguchi for helpful discussions. This work was partially supported by JST CREST Grant Number JPMJCR1403, and partially supported by JSPS KAKENHI Grant Number JP19H01115.
+	</p>
+
+	<h3 class="text-center">Related work</h3>
+	<p>
+	  <a name="ref1" class="text-primary">[1]</a>
+	  A. Bora, E. Price, A. G. Dimakis.
+	  <a href="https://github.com/AshishBora/ambient-gan/"><strong>AmbientGAN: Generative Models from Lossy Measurements</strong></a>.
+	  In ICLR, 2018.<br>
+	  <a name="ref2" class="text-primary">[2]</a>
+	  T. Kaneko, Y. Ushiku, T. Harada.
+	  <a href="https://takuhirok.github.io/rGAN/"><strong>Label-Noise Robust Generative Adversarial Networks</strong></a>.
+	  In CVPR, 2019.<br>
+	  <a name="ref3" class="text-primary">[3]</a>
+	  T. Kaneko, Y. Ushiku, T. Harada.
+	  <a href="https://takuhirok.github.io/CP-GAN/"><strong>Class-Distinct and Class-Mutual Image Generation with GANs</strong></a>.
+	  In BMVC, 2019.<br>
+	  <a name="ref4" class="text-primary">[4]</a>
+	  T. Kaneko, T. Harada.
+	  <a href="https://takuhirok.github.io/BNCR-GAN/"><strong>Blur, Noise, and Compression Robust Generative Adversarial Networks</strong></a>.
+	  In CVPR, 2021.
+	</p>
+      </div>
+    </main>
+
+    <footer class="text-center bg-whitesmoke">      
+      <div class="container">
+	<small>
+	  <strong>Noise Robust Generative Adversarial Networks</strong><br>
+	  <a href="http://www.kecl.ntt.co.jp/people/kaneko.takuhiro/">Takuhiro Kaneko</a> | t.kaneko at mi.t.u-tokyo.ac.jp
+	</small>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
