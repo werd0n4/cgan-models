@@ -84,5 +84,5 @@ case ${MODEL} in
 esac
 
 # Run
-echo "python train.py --out ${OUT} ${OPTION}"
-python train.py --out ${OUT} ${OPTION}
+echo "python3 train.py --out ${OUT} ${OPTION}"
+python3 train.py --out ${OUT} ${OPTION}
